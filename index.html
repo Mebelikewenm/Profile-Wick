@@ -3,25 +3,273 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glassmorphism UI</title>
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Dark Mode Narrative</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
 
+    <style>
+        :root {
+            --cream: #fefae0;
+            --deep-red: #d00000;
+            --purple: #6a0dad;
+            --orange: #ff6f00;
+            --dark-bg: #0a0a0a;
+        }
 
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
 
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            background-color: #000;
+            color: var(--cream);
+            font-family: 'Dancing Script', cursive;
+            overflow-x: hidden; /* Changed from hidden to allow vertical scroll */
+        }
+
+        /* --- Nav Bar --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 2rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 1.4rem;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.7;
+        }
+
+        /* --- Main Content (Page 1) --- */
+        .page-wrapper {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-text {
+            text-align: center;
+            z-index: 10;
+        }
+
+        .hero-text h1 {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-icons {
+            font-size: 1.5rem;
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        /* --- Blob Container --- */
+        .blob-container {
+            position: absolute;
+            bottom: -400px; 
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px; 
+            overflow: visible; 
+            z-index: 1;
+        }
+
+        .shining-circle {
+            width: 800px;
+            height: 800px; 
+            background: conic-gradient(
+                from 180deg at 50% 50%,
+                var(--purple) 0deg,
+                var(--deep-red) 90deg,
+                var(--deep-red) 270deg,
+                var(--orange) 360deg
+            );
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.8;
+            animation: spin 10s linear infinite;
+            box-shadow: 
+                inset 0 0 100px rgba(255, 255, 255, 0.4),
+                0 0 60px var(--deep-red);
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .glow-overlay {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 400px;
+            height: 200px;
+            background: white;
+            filter: blur(80px);
+            opacity: 0.15;
+            z-index: 5;
+        }
+
+/* --- Updated Blob Container to stay visible during scroll --- */
+        .blob-container {
+            position: fixed; /* Changed to fixed so it stays in the background as you scroll */
+            bottom: -400px; 
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px; 
+            overflow: visible; 
+            z-index: 1;
+        }
+
+        /* --- Updated Page 2 Content --- */
+        .content-section {
+            min-height: 100vh;
+            /* background-color: var(--dark-bg); <-- Removed solid color */
+            background-color: rgba(10, 10, 10, 0.4); /* Subtle dark tint for readability */
+            backdrop-filter: blur(15px); /* This creates the blurry glass effect */
+            -webkit-backdrop-filter: blur(15px); /* Safari support */
+            padding: 8rem 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+            border-top: 1px solid rgba(255, 255, 255, 0.1); /* Optional: slight separator */
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            margin-bottom: 3rem;
+            border-bottom: 2px solid var(--deep-red);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s, border-color 0.3s;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--orange);
+        }
+
+        .card i {
+            font-size: 2.5rem;
+            color: var(--orange);
+            margin-bottom: 1.5rem;
+        }
+
+        .card h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            font-family: sans-serif; /* Cleaner for body text */
+            font-size: 1rem;
+            line-height: 1.6;
+            opacity: 0.8;
+        }
+    </style>
 </head>
-
-
 <body>
-    <div class="background-blobs">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-    </div>
 
-    <main class="glass-card">
-        <h1>Glass Morphism</h1>
-        <p>This is a modern UI design trend based on translucency and background blur.</p>
-        <button class="glass-btn">Get Started</button>
+    <nav>
+        <div class="logo">Aura.</div>
+        <ul class="nav-links">
+            <li><a href="#"><i class="fa-solid fa-house"></i></a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="page-wrapper">
+        <div class="hero-text">
+            <h1>The Midnight Glow</h1>
+            <div class="social-icons">
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-x-twitter"></i>
+                <i class="fa-brands fa-dribbble"></i>
+            </div>
+        </div>
+
+        <div class="glow-overlay"></div>
+        
+        <div class="blob-container">
+            <div class="shining-circle"></div>
+        </div>
     </main>
+
+    <section id="work" class="content-section">
+        <h2 class="section-title">Selected Works</h2>
+        <div class="grid">
+            <div class="card">
+                <i class="fa-solid fa-moon"></i>
+                <h3>Lunar Phases</h3>
+                <p>Exploring the intersection of celestial movement and digital aesthetics through immersive web design.</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-fire-flame-curved"></i>
+                <h3>Embers</h3>
+                <p>A study on high-contrast color palettes and how they influence user emotional response in dark mode.</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <h3>Mystic UI</h3>
+                <p>Designing interfaces that feel like magic, utilizing fluid animations and organic shapes.</p>
+            </div>
+        </div>
+    </section>
+
 </body>
 </html>
