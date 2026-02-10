@@ -1,22 +1,21 @@
+/* 1. GLOBAL RESET & FONTS */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: #0f172a; /* Dark blue background */
-    overflow: hidden;
+    font-family: 'Montserrat', 'Segoe UI', sans-serif;
+    background: #0f172a; /* Dark blue background from your card design */
+    color: white;
+    line-height: 1.6;
+    /* Removed overflow: hidden so you can scroll to the footer */
 }
 
-/* Colorful blobs to show off the blur */
+/* 2. BACKGROUND ANIMATION (Blobs) */
 .blob {
-    position: absolute;
+    position: fixed; /* Changed to fixed so they stay in the background while scrolling */
     border-radius: 50%;
     filter: blur(50px);
     z-index: -1;
@@ -36,32 +35,26 @@ body {
     right: 25%;
 }
 
-/* The Glass Card */
+/* 3. MAIN CONTENT AREA (Glass Card) */
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* This keeps the card centered on the first "page" */
+    padding: 20px;
+}
+
 .glass-card {
     padding: 3rem;
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     text-align: center;
-    color: white;
-    
-    /* The Glassmorphism core properties */
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px); /* Safari support */
-    
+    -webkit-backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 20px;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-}
-
-.glass-card h1 {
-    margin-bottom: 1rem;
-}
-
-.glass-card p {
-    font-size: 0.9rem;
-    line-height: 1.6;
-    margin-bottom: 2rem;
-    opacity: 0.8;
 }
 
 .glass-btn {
@@ -76,4 +69,111 @@ body {
 
 .glass-btn:hover {
     background: rgba(255, 255, 255, 0.3);
+}
+
+/* 4. FOOTER STYLES */
+.site-footer {
+    background-color: #000000; /* Solid black to match the image */
+    color: #ffffff;
+    padding: 80px 20px 40px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 10;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 180px;
+    margin-bottom: 30px;
+}
+
+.footer-logo h2 {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 800;
+}
+
+.footer-logo p {
+    margin: 5px 0;
+    font-size: 10px;
+    color: #999;
+    text-transform: uppercase;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 12px;
+}
+
+.footer-column ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 11px;
+    transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+    color: #777;
+}
+
+.footer-divider {
+    border: 0;
+    border-top: 1px solid #2a2a2a;
+    margin: 40px 0;
+    width: 100%;
+}
+
+.footer-bottom {
+    text-align: center;
+}
+
+.social-icons {
+    margin-bottom: 25px;
+}
+
+.social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border: 1.5px solid #ffffff;
+    border-radius: 50%;
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 8px;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    background-color: #ffffff;
+    color: #000;
+}
+
+.copyright {
+    font-size: 12px;
+    color: #666;
+}
+
+/* 5. RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
 }
