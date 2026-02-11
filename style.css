@@ -1,6 +1,4 @@
-<<<<<<< Updated upstream
-=======
-/* --- 1. CORE SETUP --- */
+/* --- CORE SETUP --- */
 :root {
     --cream: #fefae0;
     --deep-red: #d00000;
@@ -11,25 +9,24 @@
     --glass-border: rgba(255, 255, 255, 0.1);
 }
 
->>>>>>> Stashed changes
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
 }
 
 body {
-<<<<<<< Updated upstream
+    background-color: var(--dark-bg);
+    color: var(--cream);
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    background: #0f172a; /* Dark blue background */
     overflow: hidden;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
 }
 
-/* Colorful blobs to show off the blur */
+/* --- COLORFUL / BLUR BLOBS --- */
 .blob {
     position: absolute;
     border-radius: 50%;
@@ -51,56 +48,11 @@ body {
     right: 25%;
 }
 
-/* The Glass Card */
-.glass-card {
-    padding: 3rem;
-    width: 400px;
-    text-align: center;
-    color: white;
-    
-    /* The Glassmorphism core properties */
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px); /* Safari support */
-    
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 20px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-}
-
-.glass-card h1 {
-    margin-bottom: 1rem;
-}
-
-.glass-card p {
-    font-size: 0.9rem;
-    line-height: 1.6;
-    margin-bottom: 2rem;
-    opacity: 0.8;
-}
-
-.glass-btn {
-    padding: 10px 25px;
-    background: rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    color: white;
-=======
-    background-color: var(--dark-bg);
-    color: var(--cream);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    font-family: 'Segoe UI', sans-serif;
-}
-
-/* --- 2. MULTI-COLOR BLOB ANIMATION --- */
+/* Optional larger spinning colorful background */
 .spinning-circle {
     position: absolute;
     width: 700px;
     height: 700px;
-    /* Mimicking your original colors */
     background: conic-gradient(
         from 180deg at 50% 50%,
         var(--purple) 0deg,
@@ -113,7 +65,6 @@ body {
     z-index: 1;
     animation: rotateBlob 12s linear infinite;
     opacity: 0.7;
-    box-shadow: inset 0 0 100px rgba(255, 255, 255, 0.2);
 }
 
 @keyframes rotateBlob {
@@ -121,97 +72,99 @@ body {
     to { transform: rotate(360deg); }
 }
 
-/* --- 3. GLASS CONTAINER --- */
-/* --- 3. GLASS CONTAINER (Updated for Full Height & Extra Width) --- */
+/* --- GLASS LAYOUT --- */
 .glass-container {
     position: relative;
     z-index: 10;
-    width: 95%; /* Increased from 90% */
-    max-width: 600px; /* Increased from 500px for more room */
-    height: 100vh; /* This makes it go down the whole way */
-    
+    width: 95%;
+    max-width: 600px;
+    height: 100vh;
     background: var(--glass-bg);
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
     border-left: 1px solid var(--glass-border);
     border-right: 1px solid var(--glass-border);
-    /* Removed top/bottom border-radius for the "full bleed" look */
-    padding: 3rem 2.5rem; 
+    padding: 3rem 2.5rem;
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
-    
-    /* Center content inside the full-height column */
     display: flex;
     flex-direction: column;
 }
 
-/* --- 6. STACKED ACTION BUTTONS (Updated for Layout) --- */
-.actions {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    flex-grow: 1; /* Pushes content to fill the space if needed */
-    overflow-y: auto; /* Adds scrolling if you add too many cards */
-    padding-bottom: 2rem;
+.glass-card {
+    padding: 3rem;
+    width: 100%;
+    max-width: 480px;
+    text-align: center;
+    color: white;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.37);
 }
 
-/* Optional: Smooth out the scrollbar for the actions list */
-.actions::-webkit-scrollbar {
-    width: 4px;
-}
-.actions::-webkit-scrollbar-thumb {
-    background: var(--glass-border);
->>>>>>> Stashed changes
-    border-radius: 10px;
+.glass-card h1 { margin-bottom: 1rem; }
+.glass-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    opacity: 0.9;
 }
 
-/* --- 4. HEADER & LOGO --- */
+.glass-btn {
+    padding: 10px 25px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    border-radius: 12px;
+    cursor: pointer;
+}
+.glass-btn:hover { background: rgba(255,255,255,0.25); }
+
+/* --- HEADER & LOGO --- */
 .user-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2rem;
 }
-
-.user-info {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
+.user-info { display: flex; align-items: center; gap: 10px; }
 
 .avatar {
     width: 40px;
     height: 40px;
-    background: var(--deep-red);
-    border-radius: 50%;
-    border: 1px solid var(--cream);
+    background: linear-gradient(45deg, var(--deep-red), var(--orange));
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.3);
 }
 
 .logo {
     font-family: 'Dancing Script', cursive;
     font-size: 1.8rem;
-    color: var(--cream);
+    background: linear-gradient(to right, var(--cream), var(--orange));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-/* --- 5. SEARCH BAR --- */
-.search-section {
-    margin-bottom: 2rem;
-}
-
-.search-group {
-    display: flex;
-    gap: 8px;
-}
-
+/* --- SEARCH BAR --- */
+.search-section { margin-bottom: 2rem; }
+.search-group { display:flex; gap:8px; }
 .search-input {
     flex: 1;
     padding: 12px 20px;
     border-radius: 12px;
     border: 1px solid var(--glass-border);
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0,0,0,0.45);
     color: white;
     outline: none;
 }
-
+.search-input:focus {
+    border-color: var(--deep-red);
+    box-shadow: 0 0 15px rgba(208,0,0,0.18);
+    background: rgba(0,0,0,0.6);
+}
 .enter-btn {
     padding: 0 20px;
     border-radius: 12px;
@@ -222,90 +175,36 @@ body {
     font-weight: bold;
 }
 
-/* --- 6. STACKED ACTION BUTTONS --- */
-.actions {
-    display: flex;
-    flex-direction: column; /* This puts one under the other */
-    gap: 15px;
-}
+/* --- ACTIONS / CARDS --- */
+.actions { display:flex; flex-direction:column; gap:15px; flex-grow:1; overflow-y:auto; padding-bottom:2rem; }
+.actions::-webkit-scrollbar { width: 6px; }
+.actions::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.06); border-radius: 10px; }
 
 .action-card {
     width: 100%;
-    padding: 1.5rem;
+    padding: 1rem;
     border-radius: 15px;
     border: 1px solid var(--glass-border);
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(255,255,255,0.03);
     color: var(--cream);
     font-size: 1rem;
     text-align: left;
     cursor: pointer;
-    transition: 0.3s;
-}
-
-<<<<<<< Updated upstream
-.glass-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
-=======
-.action-card:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: var(--orange);
-    transform: translateX(5px); /* Slight slide effect */
-}
-
-.action-card.secondary span {
-    display: block;
-    opacity: 0.6;
-    font-size: 0.85rem;
-    margin-top: 4px;
-}
-/* --- Updates to CORE SETUP --- */
-body {
-    font-family: 'Inter', sans-serif; /* Cleaner body font */
-}
-
-/* --- Improved Avatar --- */
-.avatar {
-    width: 40px;
-    height: 40px;
-    background: linear-gradient(45deg, var(--deep-red), var(--orange));
-    border-radius: 12px; /* Squircle looks more modern */
-    border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-/* --- Search Input Focus --- */
-.search-input:focus {
-    border-color: var(--deep-red);
-    box-shadow: 0 0 15px rgba(208, 0, 0, 0.3);
-    background: rgba(0, 0, 0, 0.6);
-}
-
-/* --- Enhanced Action Cards --- */
-.action-card {
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
     display: flex;
     flex-direction: column;
-    gap: 150px;
+    gap: 6px;
 }
 
-.action-card strong {
-    color: var(--orange);
-    font-size: 1.1rem;
+.action-card:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: var(--orange);
+    transform: translateX(4px);
 }
+.action-card.secondary span { display:block; opacity:0.6; font-size:0.85rem; margin-top:4px; }
+.action-card strong { color: var(--orange); font-size:1.05rem; }
+.action-card span { font-size:0.85rem; opacity:0.75; }
+.action-card.primary-action:hover { border-color: var(--deep-red); background: rgba(208,0,0,0.06); }
 
-.action-card span {
-    font-size: 0.85rem;
-    opacity: 0.7;
-}
-
-.action-card.primary-action:hover {
-    border-color: var(--deep-red);
-    background: rgba(208, 0, 0, 0.1);
-}
-
-/* --- Logo Polish --- */
-.logo {
-    font-family: 'Dancing Script', cursive;
-    background: linear-gradient(to right, var(--cream), var(--orange));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
->>>>>>> Stashed changes
-}
+/* small helpers */
+.center { display:flex; align-items:center; justify-content:center; }
